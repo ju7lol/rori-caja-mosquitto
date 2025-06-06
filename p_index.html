@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Control RORI</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    h1 { margin-bottom: 40px; }
+    button {
+      font-size: 20px; margin: 10px; padding: 15px 30px;
+      border-radius: 10px; cursor: pointer;
+    }
+    .status { margin-top: 30px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>📡 Panel de Acceso RORI</h1>
+
+  <button onclick="abrir('esp32/1')">🔓 Abrir Pluma 1</button>
+  <button onclick="abrir('esp32/2')">🔓 Abrir Pluma 2</button>
+  <button onclick="abrir('esp32/3')">🔓 Abrir Entrada Peatonal</button>
+
+  <div id="status" class="status"></div>
+
+  <script>
+    async function abrir(dispositivo) {
+      const status = document.getElementById("status");
+      status.textContent = "⏳ Enviando orden a " + dispositivo + "...";
+
+      try {
+        const res = await fetch(`https://39d8-187-134-212-233.ngrok-free.app/abrir?dispositivo=${dispositivo}`, {
+          method: "POST"
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+          status.textContent = `✅ ${dispositivo} activado correctamente.`;
+        } else {
+          status.textContent = `❌ Error: ${data.mensaje || data.error}`;
+        }
+      } catch (err) {
+        status.textContent = "⚠️ Error de conexión: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
