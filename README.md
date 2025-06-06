@@ -1,1 +1,0 @@
-# rori-caja-mosquitto
