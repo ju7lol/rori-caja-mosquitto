@@ -36,7 +36,7 @@ git clone https://github.com/TU_USUARIO/rori-caja-local.git
 cd rori-caja-local
 pip install -r requirements.txt
 python caja_rori.py
-
+```
 ---
 
 ## 🌍 Acceso remoto con Ngrok - Pruebas
@@ -45,29 +45,40 @@ python caja_rori.py
 
 2. Ejecuta tu servidor:
 
+```bash
 python caja_rori.py
+```
 
 3. En otra terminal, corre:
 
+```bash
 ngrok http 5000
+```
 
 4. Copia la URL pública que aparece, como:
 
+```bash
 https://abcd1234.ngrok.io
+```
 
 5. Usa esa URL desde cualquier parte del mundo para abrir dispositivos:
 
+```bash
 https://abcd1234.ngrok.io/abrir?dispositivo=esp32/1
+```
 
 ---
 
 ## 🌍 Uso en API
 
+```bash
 POST /abrir?dispositivo=esp32/1
+```
 
 - Esto publicará el mensaje "abrir" en el topic MQTT:
-
+```bash
 rori/esp32/1
+```
 
 ---
 
