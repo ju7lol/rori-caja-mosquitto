@@ -87,8 +87,10 @@ rori/esp32/1
 Tu ESP32 debe estar conectado a la misma red WiFi y suscribirse al topic correspondiente.
 
 Ejemplo (en Arduino):
+```bash
 client.setServer("IP_DE_LA_CAJA", 1883);
 client.subscribe("rori/esp32/1");
+```
 
 ---
 
